@@ -1,45 +1,31 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/app
     docker:
       - image: circleci/node:8.11.1
     steps:
       - checkout
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-{{checksum "package.json"}}
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
       - run:
-          name: Install npm
+          name: install-dependencies
           command: npm install
       - save_cache:
-          key: dependency-cache-{{checksum "package.json"}}
           paths:
             - node_modules
-  test:
-    docker:
-      - image: circleci/node:8.11.1
-    steps:
-      - checkout
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
-          name: Test
-          command: npm test
+          name: Run linter
+          command: npm run lint
       - run:
-          name: Generate code coverage
+          name: Run unit tests
+          command: npm run test
+      - run:
+          name: Coverage report
           command: npm run coverage
       - run:
-          name: Codecov upload
-          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+          name: CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
