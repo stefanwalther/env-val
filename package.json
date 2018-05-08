@@ -1,6 +1,6 @@
 {
   "name": "env-val",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configuration management using environment-variables, validation & object extension.",
   "keywords": [
     "config",
