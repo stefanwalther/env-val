@@ -5,6 +5,10 @@ const DEFAULT_ENVAL_CONFIG = {
   CONFIG_DIR: path.join(__dirname, 'config')
 };
 
+/**
+ * Env-val allows you to easily load, validate and overwrite environment variables used in your node.js project.
+ * @class env-val
+ */
 class EnvVal {
 
   /**
@@ -27,8 +31,13 @@ class EnvVal {
 
   }
 
+  static get joi() {
+    return Joi;
+  }
+
   /**
    * Initializes the configuration objects.
+   * @name init
    * @public
    */
   init() {
@@ -39,7 +48,9 @@ class EnvVal {
   }
 
   /**
+   * @name setConfigs
    * Set custom configs, based on the schemes already loaded.
+   * @public
    */
   setConfigs(customConfig) {
 

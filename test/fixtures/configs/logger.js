@@ -1,13 +1,13 @@
-const joi = require('joi');
+const EnvVal = require('./../../../src/index');
 
-const schema = joi.object({
+const schema = EnvVal.joi.object({
 
-  ENV_VAL_LOGGER_LEVEL: joi
+  ENV_VAL_LOGGER_LEVEL: EnvVal.joi
     .string()
     .valid(['error', 'warn', 'info', 'verbose', 'debug', 'silly'])
     .default('info'),
 
-  ENV_VAL_LOGGER_ENABLED: joi
+  ENV_VAL_LOGGER_ENABLED: EnvVal.joi
     .boolean()
     .truthy('TRUE')
     .truthy('true')
@@ -17,14 +17,11 @@ const schema = joi.object({
 
 }).required();
 
-const {error, value: envVars} = joi.validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
+const {error, value: envVars} = EnvVal.joi.validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
 
-// Const values = {
-//   LOGGER: envVars
-// };
 const values = envVars;
 
 module.exports = {

@@ -8,3 +8,7 @@ help:								## Show this help.
 gen-readme:					## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
+
+gen-api-docs:
+	docker run --rm --tty -v ${PWD}:/opt/jsdoc2md stefanwalther/jsdoc2md ./src/index.js > ./docs/api-docs.md
+.PHONY: gen-api-dosc
