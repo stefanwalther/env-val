@@ -3,8 +3,7 @@ jobs:
   build:
     working_directory: ~/app
     docker:
-      - image: circleci/node:4.8.2
-      - image: mongo:3.4.4
+      - image: circleci/node:8.11.1
     steps:
       - checkout
       - run:
@@ -21,7 +20,7 @@ jobs:
             - node_modules
   test:
     docker:
-      - image: circleci/node:4.8.2
+      - image: circleci/node:8.11.1
     steps:
       - checkout
       - run:
@@ -30,6 +29,9 @@ jobs:
       - run:
           name: Generate code coverage
           command: npm run coverage
+      - run:
+          name: Codecov upload
+          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 workflows:
   version: 2
   build_and_test:
