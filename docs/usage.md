@@ -4,7 +4,7 @@
 Schemas are loaded by default from all files matching `**/*.js` in the directory `./config`.
 Define a schema in `./config/logger.js`.
 
-```
+```js
 // Load EnvVal to be able to get the exposed joi object.
 const EnvVal = require('env-val');
 
@@ -25,7 +25,9 @@ const schema = EnvVal.joi.object({
 
 }).required();
 
-const {error, value: envVars} = EnvVal.joi.validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
+const {error, value: envVars} = EnvVal
+                                .joi
+                                .validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
@@ -41,7 +43,7 @@ module.exports = {
 
 Basic initialization of `env-val`:
 
-```
+```js
 const EnvVal = require('env-val');
 
 let configs = new EnvVal().init();
@@ -53,7 +55,7 @@ console.log(configs.LOGGER_LEVEL); // => 'info'
 
 Override environment variables:
 
-```
+```js
 const EnvVal = require('env-val');
 
 let configs = new EnvVal({
@@ -69,7 +71,7 @@ console.log(configs.LOGGER_LEVEL); // => 'warn'
 By default config files are loaded from the `./config` directory.
 This can be customized by passing the `CONFIG_DIR` option to the constructor of _env-val_.
 
-```
+```js
 const EnvVal = require('env-val');
 const path = require('path');
 
