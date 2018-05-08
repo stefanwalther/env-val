@@ -17,12 +17,10 @@ const schema = EnvVal.joi.object({
 
 }).required();
 
-const {error, value: envVars} = EnvVal.joi.validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
+const {error, value: values} = EnvVal.joi.validate(process.env, schema, {allowUnknown: true, stripUnknown: true});
 if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
-
-const values = envVars;
 
 module.exports = {
   schema,
