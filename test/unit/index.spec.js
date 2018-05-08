@@ -48,10 +48,23 @@ describe('Unit Tests', () => {
 
     it('allows to overwrite some configs', () => {
       const customDir = path.join(__dirname, '../fixtures/configs');
-      let config = new EnvVal({ENV_VAL_LOGGER_LEVEL: 'warning', ENV_VAL_LOGGER_ENABLED: false}, {CONFIG_DIR: customDir}).init();
+      let config = new EnvVal({
+        ENV_VAL_LOGGER_LEVEL: 'warn',
+        ENV_VAL_LOGGER_ENABLED: false
+      }, {CONFIG_DIR: customDir}).init();
       expect(config).to.have.a.property('configStore').to.exist;
-      expect(config.configStore).to.have.property('ENV_VAL_LOGGER_LEVEL').to.be.a('string').to.equal('warning');
+      expect(config.configStore).to.have.property('ENV_VAL_LOGGER_LEVEL').to.be.a('string').to.equal('warn');
       expect(config.configStore).to.have.property('ENV_VAL_LOGGER_ENABLED').to.be.a('boolean').to.equal(false);
+    });
+
+    it('throws an error if configs violate the schema (valid strings)', () => {
+      const customDir = path.join(__dirname, '../fixtures/configs');
+      try {
+        let config = new EnvVal({ENV_VAL_LOGGER_LEVEL: 'foo'}, {CONFIG_DIR: customDir}).init();
+        expect(config.configStore).to.have.property('ENV_VAL_LOGGER_LEVEL').to.be.a('string').to.equal('foo');
+      } catch (e) {
+        expect(e).to.have.property('message').to.deep.contain('"ENV_VAL_LOGGER_LEVEL" fails because');
+      }
     });
   });
 

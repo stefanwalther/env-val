@@ -4,7 +4,7 @@ const schema = joi.object({
 
   ENV_VAL_LOGGER_LEVEL: joi
     .string()
-    .allow(['error', 'warn', 'info', 'verbose', 'debug', 'silly'])
+    .valid(['error', 'warn', 'info', 'verbose', 'debug', 'silly'])
     .default('info'),
 
   ENV_VAL_LOGGER_ENABLED: joi
