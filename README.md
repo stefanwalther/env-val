@@ -2,7 +2,7 @@
 
 > Configuration management using environment-variables, validation & object extension.
 
-[![CircleCI](https://img.shields.io/circleci/project/github/stefanwalther/env-eval.svg)](https://circleci.com/gh/stefanwalther/env-eval)
+[![CircleCI](https://img.shields.io/circleci/project/github/stefanwalther/env-val.svg)](https://circleci.com/gh/stefanwalther/env-val)
 [![codecov](https://codecov.io/gh/stefanwalther/env-val/branch/master/graph/badge.svg?token=dbOESk00SQ)](https://codecov.io/gh/stefanwalther/env-val)
 
 ---
