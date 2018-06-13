@@ -47,7 +47,7 @@
     "eslint-config-space-single": "0.3.3",
     "husky": "0.14.3",
     "jsdoc-to-markdown": "4.0.1",
-    "nyc": "11.8.0",
+    "nyc": "11.9.0",
     "mocha": "5.2.0"
   }
 }
