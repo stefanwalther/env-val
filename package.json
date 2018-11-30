@@ -41,7 +41,7 @@
     "joi": "^13.2.0"
   },
   "devDependencies": {
-    "chai": "4.1.2",
+    "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "eslint": "5.6.0",
     "eslint-config-space-single": "0.3.5",
