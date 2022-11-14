@@ -44,7 +44,7 @@
     "chai": "4.2.0",
     "chai-as-promised": "7.1.1",
     "eslint": "5.9.0",
-    "eslint-config-space-single": "0.3.5",
+    "eslint-config-space-single": "0.3.11",
     "husky": "1.2.0",
     "jsdoc-to-markdown": "4.0.1",
     "nyc": "13.1.0",
