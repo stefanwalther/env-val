@@ -48,6 +48,6 @@
     "husky": "1.2.0",
     "jsdoc-to-markdown": "4.0.1",
     "nyc": "13.1.0",
-    "mocha": "5.2.0"
+    "mocha": "10.7.3"
   }
 }
