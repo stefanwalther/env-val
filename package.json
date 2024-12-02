@@ -37,7 +37,7 @@
     "test": "nyc --reporter=lcov mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'"
   },
   "dependencies": {
-    "glob": "^7.1.2",
+    "glob": "^11.0.0",
     "joi": "^14.0.0"
   },
   "devDependencies": {
